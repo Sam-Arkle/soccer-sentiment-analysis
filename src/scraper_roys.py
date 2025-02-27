@@ -3,37 +3,13 @@
 import requests 
 import csv
 from bs4 import BeautifulSoup
-
-# sitemap2_url = "https://roysviewfrom.com/post-sitemap2.xml"
-
-# sitemap2_response = requests.get(sitemap2_url)
-
-# old_soup = BeautifulSoup(sitemap2_response.content, 'xml')
-
-# # Find all <loc> tags (URLs in a sitemap are typically in <loc> tags)
-# loc_tags = old_soup.find_all('loc')
-
-# # Filter the URLs that contain 'pre-' in the text content
-# old_links = [tag.text for tag in loc_tags if 'pre-match-view' in tag.text]
-
-# sitemap_url = "https://roysviewfrom.com/post-sitemap.xml"
-# sitemap_response = requests.get(sitemap_url)
-# new_soup = BeautifulSoup(sitemap_response.content, "xml")
-# new_loc_tags = new_soup.find_all('loc')
-# new_links = [tag.text for tag in new_loc_tags if 'pre-match-view' in tag.text]
-
-# I'll keep the urls stored as python lists for now. It will make the project easier to update as new data comes out. 
-# But csvs would be a good solution for a bigger project. 
- 
-# Now just testing the concept before running for all the old links
-# example = "https://roysviewfrom.com/2015/01/22/pre-match-view-from-preston/"
-# ex_res = requests.get(example)
-# soup = BeautifulSoup(ex_res.content, 'html5lib')
-# comment_strongs = soup.find_all('strong')
-# comments = [strong.get_text(strip=True) for strong in comment_strongs]
+# 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0'
+}
 
 def extract_pre_match_urls(sitemap_url):
-    response = requests.get(sitemap_url)
+    response = requests.get(sitemap_url, headers=headers)
     if response.status_code != 200:
         print(f"Failed to retrieve sitemap: {sitemap_url}")
         return []
@@ -48,9 +24,9 @@ def extract_pre_match_urls(sitemap_url):
 
 # Function to scrape data from a match page
 def scrape_comments(url):
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print(f"Failed to retrieve {url}")
+        print(f"Failed to retrieve {url}") 
         return []
 
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -97,7 +73,7 @@ def get_comments_from_url(urls):
         comments_data = []
         for i, url in enumerate(urls):
                 try:
-                        comments = scrape_comments(urls)  # Ensure this returns a list of comments
+                        comments = scrape_comments(url)  # Ensure this returns a list of comments
                         if comments:
                                 comments_data.extend(comments)  # Extend instead of append to avoid nested lists
                                 print(f"Processed {i+1}/{len(urls)}: {url}")
@@ -109,15 +85,14 @@ def get_comments_from_url(urls):
 
 def save_comments_to_csv(comments_data, filename="comments.csv"):
     # Define the CSV column headers
-    fieldnames = ["team", "url", "date", "comments"]
+    fieldnames = ["team", "url", "published_date", "comment"]
     
-    # Open the file in append mode, creating it if it doesn't exist
-    with open(filename, mode='a', newline='', encoding='utf-8') as file:
+    # Open the file in write mode ('w'), which overwrites the file
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         
-        # Write the header if the file is empty
-        if file.tell() == 0:  # Check if the file is empty
-            writer.writeheader()
+        # Write the header (this will happen every time since we're using 'w')
+        writer.writeheader()
         
         # Write each comment data as a row
         for comment in comments_data:

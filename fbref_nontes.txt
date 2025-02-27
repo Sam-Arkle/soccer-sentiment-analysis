@@ -1,0 +1,3 @@
+Seems like the best site for getting game stats from. 
+Easiest to just hardcode the urls for the seasons, could get a crawler to get specific ones but
+the simple solution makes sense. Potential pitfall would be if the hardcoded urls changed. 

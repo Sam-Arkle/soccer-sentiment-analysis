@@ -23,3 +23,10 @@ Collecting URL for validation, team name and published date to match with the ac
 Could arguably not capture url but for now it is the safest bet. 
 - Could store a comment per data entry or nest the comments on a per page basis. For now I'll go with 
 one comment per data entry and we'll see if that bites us later. 
+The number of pre-match comments is 9155, from 486 matches. 
+
+
+FBref scraping notes:
+Issues with rate limiting (429 responses). Potential solution is specify the agent. 
+
+Successfully scrapping match urls, getting 531 matches. 

@@ -30,3 +30,15 @@ FBref scraping notes:
 Issues with rate limiting (429 responses). Potential solution is specify the agent. 
 
 Successfully scrapping match urls, getting 531 matches. 
+
+Match scrapping:
+- Current plan is to amalgamate all the match stats? Or just collect Sheffiled united fouls, tackles, penalties?
+I think just collect Sheffield united tackles fouls cards and penalties given. 
+
+Note that these stats don't seem to exist for league one games. So should we ignore those or should 
+we treat them seperately? 
+
+
+https://www.sports-reference.com/bot-traffic.html 
+There is a rate limit of no more than ten requests a minute, which means that the delay should be at least 
+six seconds. 

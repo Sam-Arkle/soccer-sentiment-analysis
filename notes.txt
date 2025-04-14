@@ -42,3 +42,20 @@ we treat them seperately?
 https://www.sports-reference.com/bot-traffic.html 
 There is a rate limit of no more than ten requests a minute, which means that the delay should be at least 
 six seconds. 
+
+
+
+
+Sentiment analysis:
+Many different ways to go about this. Fortunately, as we're working with a relatively small data set, we 
+can use a more expensive analysis. We'll be trying a transformer based analysis initially. 
+One main decision with the analysis is whether we try and check for specific emotions (angry, excited...) or 
+for a more clear cut positive/negative analysis. I'm going with the latter for now but it could be interesting 
+to see what effects modifications would have. 
+
+Basic sentiment analysis complete. 
+
+--- UPDATE 14th April
+Think I have the data aligned now, but there is an issue in how the match stats are being scraped. 
+For some reason (possibly an issue with home or away games) not pulling all the data. Also, should update the scrape to include data on 
+who won the game. 

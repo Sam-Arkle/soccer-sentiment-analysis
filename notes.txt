@@ -59,3 +59,7 @@ Basic sentiment analysis complete.
 Think I have the data aligned now, but there is an issue in how the match stats are being scraped. 
 For some reason (possibly an issue with home or away games) not pulling all the data. Also, should update the scrape to include data on 
 who won the game. 
+
+--- 
+Updated the way we pull match stats. Now got goals as well as who won and opposition data. 
+Need to test it and re-scrape from all matches which will be an overnight job. 

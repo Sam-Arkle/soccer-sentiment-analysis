@@ -63,3 +63,29 @@ who won the game.
 --- 
 Updated the way we pull match stats. Now got goals as well as who won and opposition data. 
 Need to test it and re-scrape from all matches which will be an overnight job. 
+
+^^ Finished the re-scraping and initial testing seems good. 
+One thing to note, the table scraped doesn't seem to match entirely the one presented on 
+the website, I must be messing up the html slightly. But it doesn't matter. The key difference 
+is that I'm pulling the tackles won stat, and not the overall tackles stat. 
+
+-----
+
+Next step is linking the match stats and the comments!
+
+
+
+
+---- 
+We've made aligned the comments and matches on a per comment basis. However, I think 
+the prediction will be best when we aggregate on matches as we want to be making match predictions. 
+I think the best way to do this will be to work from the aligned data.
+Why? -> Because we don't have comments for every match (especially earlier matches) and so in this way we are 
+only capturing those matches which have comments.
+
+So now we want to get the data grouped by match, and we want to get some aggregate features. 
+E.g. Overall sentiment
+
+Looks like this has been succesfull. I've checked the first and last set of comments and they seem to have lined up correctly.
+I haven't given a thorough check to see that comments haven't gone with the wrong match, but I trust the grouping. 
+

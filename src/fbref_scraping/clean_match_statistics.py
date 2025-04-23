@@ -32,6 +32,6 @@ def extract_match_info(details):
 
     return pd.Series([date, opponent, home_away])
 
-df = pd.read_csv('match_statistics.csv')
-df[['date', 'opponent', 'home_away']] = df['Match Details'].apply(extract_match_info)
-df.to_csv('match_statistics_cleaned.csv', index=False)
+df = pd.read_csv('match_statistics_v2.csv')
+df[['date', 'home_away']] = df['Match Details'].apply(extract_match_info)
+df.to_csv('match_statistics_cleaned_v2.csv', index=False)

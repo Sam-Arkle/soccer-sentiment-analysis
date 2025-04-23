@@ -1,7 +1,7 @@
 # soccer-sentiment-analysis
 Scraping soccer forums to predict in game events based on sentiment.
 
-Ongoing project started 26th February 2025.
+Ongoing project.
 
 Desired stages: 
 - Scrape data from [https://roysviewfrom.com](Roys View) using Beautiful Soup (Possibly scrapy) (Complete, 9,155 comments scraped from pre-match views).
